@@ -1,0 +1,30 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - name: "Aquecimento"
+      duration: 20
+      arrivalRate: 2
+      rampTo: 5
+    - name: "Carga"
+      duration: 20
+      arrivalRate: 5
+      maxVusers: 8 
+  environments:
+    localhost: 
+      target: "http://localhost:3000"
+      phases:
+        - name: "Aquecimento localhost"
+          duration: 5
+          arrivalRate: 1
+    staging:
+      target: "http://staging.eta.br"
+      phases:
+        - name: "Aquecimento staging"
+          duration: 5
+          arrivalRate: 1
+scenarios:
+  - name: "Listar usuarios"
+    flow:
+      - get:
+          url: "/usuarios"
+          

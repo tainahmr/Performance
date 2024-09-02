@@ -1,0 +1,26 @@
+config:
+  environments:
+    localhost: 
+      target: "http://localhost:3000"
+      phases:
+        - name: "Aquecimento"
+          duration: 5
+          arrivalRate: 1
+          rampTo: 5
+        - name: "Carga"
+          duration: 3
+          arrivalRate: 5
+  payload:
+    path: "login.csv"   
+    fields: 
+      - "email"
+      - "password"  
+scenarios:
+  - name: "Logar Usuario"
+    flow:
+      - post:   
+          url: "/login"
+          json:
+            email: "{{ email }}"
+            password: "{{ password }}"
+            
