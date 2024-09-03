@@ -23,4 +23,6 @@ scenarios:
           json:
             email: "{{ email }}"
             password: "{{ password }}"
-            
+          capture:
+            - json: $.authorization
+              as: userToken            

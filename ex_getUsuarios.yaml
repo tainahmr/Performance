@@ -1,0 +1,16 @@
+config:
+  target: "http://localhost:3000"
+  phases:
+    - name: "Carga"
+      duration: 30
+      arrivalRate: 20
+      maxVusers: 40 
+  environments:
+    localhost: 
+      target: "http://localhost:3000"
+      
+scenarios:
+  - name: "Listar usuarios"
+    flow:
+      - get:
+          url: "/usuarios"
